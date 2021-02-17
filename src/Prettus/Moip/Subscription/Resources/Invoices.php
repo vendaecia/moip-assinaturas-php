@@ -72,12 +72,12 @@ class Invoices {
      */
     public function retryPayment($code, array $options = []){
 
-        $url = $this->interpolate( self::BASE_PATH."/{code}/payments", [
+        $url = $this->interpolate( self::BASE_PATH."/{code}/retry", [
             'version'   => $this->client->getApiVersion(),
             'resource'  => self::RESOURCE,
             'code'      => $code
         ]);
 
-        return $this->client->get($url, $options);
+        return $this->client->post($url, $options);
     }
 }
